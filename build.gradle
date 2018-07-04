@@ -8,17 +8,17 @@ dependencies {
     implementation project(':CommonKitSdk_Android')
 
     /* Kotlin */
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
 
     /* Volley */
-    implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation 'org.apache.httpcomponents:httpcore:4.4.9'
-    implementation 'org.apache.httpcomponents:httpmime:4.5.5'
+    implementation "com.mcxiaoke.volley:library:$VOLLEY_VERSION"
+    implementation "org.apache.httpcomponents:httpcore:$HTTPCORE_VERSION"
+    implementation "org.apache.httpcomponents:httpmime:$HTTPMIME_VERSION"
 
     /* Test */
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "junit:junit:$JUNIT_VERSION"
+    androidTestImplementation "com.android.support.test:runner:$ANDROID_TEST_RUNNER_VERSION"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$ANDROID_TEST_ESPRESSO_CORE_VERSION"
 }
 
 android {
@@ -57,4 +57,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    packagingOptions {
+//        exclude 'META-INF/NOTICE.txt'
+//        exclude 'META-INF/NOTICE'
+//        exclude 'META-INF/LICENSE.txt'
+//        exclude 'META-INF/LICENSE'
+//        exclude 'META-INF/DEPENDENCIES'
+//    }
 }
