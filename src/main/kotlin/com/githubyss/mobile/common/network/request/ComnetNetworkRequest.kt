@@ -7,7 +7,7 @@ import com.android.volley.ParseError
 import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonRequest
-import com.githubyss.mobile.common.kit.util.ComkitLogcatUtils
+import com.githubyss.mobile.common.kit.logcat.ComkitLogcatUtils
 import com.githubyss.mobile.common.network.config.ComnetConfig
 import com.githubyss.mobile.common.network.model.ComnetBasicNetworkModel
 import org.json.JSONException
