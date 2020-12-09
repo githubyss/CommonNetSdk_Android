@@ -8,22 +8,22 @@ dependencies {
     implementation project(':CommonKitSdk_Android')
 
     /* Kotlin */
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     /* Volley */
-    implementation "com.mcxiaoke.volley:library:$VOLLEY_VERSION"
-    implementation "org.apache.httpcomponents:httpcore:$HTTPCORE_VERSION"
-    implementation "org.apache.httpcomponents:httpmime:$HTTPMIME_VERSION"
+    implementation "com.mcxiaoke.volley:library:$volley_version"
+    implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
+    implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
 
     /* Test */
-    testImplementation "junit:junit:$JUNIT_VERSION"
-    androidTestImplementation "com.android.support.test:runner:$ANDROID_TEST_RUNNER_VERSION"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$ANDROID_TEST_ESPRESSO_CORE_VERSION"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_core_version"
 }
 
 android {
-    buildToolsVersion BUILD_TOOLS_VERSION
-    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion build_tools_version
+    compileSdkVersion compile_sdk_version
 
     buildTypes {
         debug {
@@ -45,8 +45,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion TARGET_SDK_VERSION
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
 
         versionCode 1
         versionName "1.0"

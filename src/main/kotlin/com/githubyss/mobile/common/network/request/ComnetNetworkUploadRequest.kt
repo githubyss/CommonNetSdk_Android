@@ -88,7 +88,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
                     val map = HashMap<String, String>()
                     map.put("responseCode", ComnetConfig.NEED_LOGIN_CODE)
                     map.put("responseMsg", "login.flag")
-                    val jsonObject = JSONObject(map)
+                    val jsonObject = JSONObject(map as Map<*, *>)
                     val networkModel = ComnetBasicNetworkModel(jsonObject)
                     return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
                 }

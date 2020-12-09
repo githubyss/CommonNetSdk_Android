@@ -97,9 +97,9 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
                 if (entry.key == "login.flag") {
                     ComkitLogcatUtils.d(tag = "Volley network result", msg = "login.flag")
                     val map = HashMap<String, String>()
-                    map.put("responseCode", ComnetConfig.NEED_LOGIN_CODE)
-                    map.put("responseMsg", "login.flag")
-                    val jsonObject = JSONObject(map)
+                    map["responseCode"] = ComnetConfig.NEED_LOGIN_CODE
+                    map["responseMsg"] = "login.flag"
+                    val jsonObject = JSONObject(map as Map<*, *>)
                     val networkModel = ComnetBasicNetworkModel(jsonObject)
                     return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
                 }
