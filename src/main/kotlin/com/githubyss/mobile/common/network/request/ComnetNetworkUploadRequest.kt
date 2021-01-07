@@ -2,7 +2,7 @@ package com.githubyss.mobile.common.network.request
 
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
-import com.githubyss.mobile.common.kit.logcat.ComkitLogcatUtils
+import com.githubyss.mobile.common.kit.logcat.LogcatUtils
 import com.githubyss.mobile.common.network.config.ComnetConfig
 import com.githubyss.mobile.common.network.model.ComnetBasicNetworkModel
 import org.apache.http.Consts
@@ -84,7 +84,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
         try {
             for (entry in response?.headers?.entries ?: emptyMap<String, String>().entries) {
                 if (entry.key == "login.flag") {
-                    ComkitLogcatUtils.d(tag = "Volley network result", msg = "login.flag")
+                    LogcatUtils.d(tag = "Volley network result", msg = "login.flag")
                     val map = HashMap<String, String>()
                     map.put("responseCode", ComnetConfig.NEED_LOGIN_CODE)
                     map.put("responseMsg", "login.flag")
@@ -95,7 +95,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
             }
 
             val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers)).toString()
-            ComkitLogcatUtils.d(tag = "Volley network result", msg = result)
+            LogcatUtils.d(tag = "Volley network result", msg = result)
             val jsonObject = JSONObject(result)
             val networkModel = ComnetBasicNetworkModel(jsonObject)
             return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))

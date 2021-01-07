@@ -39,6 +39,10 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    // lintOptions {
+    //     abortOnError false
+    // }
 }
 
 dependencies {
@@ -49,6 +53,8 @@ dependencies {
 
     /* Volley */
     implementation "com.mcxiaoke.volley:library:$volley_version"
+
+    /* Http */
     implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
     implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
 
