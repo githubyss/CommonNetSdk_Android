@@ -14,21 +14,20 @@ class ComnetApplication private constructor() {
     companion object {
         var instance = Holder.INSTANCE
     }
-
+    
     private object Holder {
         val INSTANCE = ComnetApplication()
     }
-
-
+    
+    
     var application: Application? = null
         private set
-
-
-    fun init(application: Application) {
-        if (ComnetApplication.instance.application != null) {
-            return
+    
+    
+    fun init(application: Application): ComnetApplication {
+        if (instance.application == null) {
+            instance.application = application
         }
-
-        ComnetApplication.instance.application = application
+        return instance
     }
 }
