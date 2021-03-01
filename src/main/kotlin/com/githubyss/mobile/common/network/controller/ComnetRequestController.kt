@@ -4,7 +4,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
-import com.githubyss.mobile.common.network.ComnetApplication
+import com.githubyss.mobile.common.network.ComnetApplicationConfig
 import com.githubyss.mobile.common.network.cache.ComnetBitmapCache
 
 /**
@@ -34,7 +34,7 @@ class ComnetRequestController private constructor() {
 
 
     init {
-        requestQueue = requestQueue ?: Volley.newRequestQueue(ComnetApplication.instance.application)
+        requestQueue = requestQueue ?: Volley.newRequestQueue(ComnetApplicationConfig.application)
         imageLoader = imageLoader ?: ImageLoader(requestQueue, ComnetBitmapCache())
     }
 
