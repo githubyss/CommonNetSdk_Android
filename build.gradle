@@ -57,18 +57,4 @@ dependencies {
     /* Http */
     implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
     implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
-
-
-    // /* Kotlin */
-    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //
-    // /* Volley */
-    // implementation "com.mcxiaoke.volley:library:$volley_version"
-    // implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
-    // implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
-    //
-    // /* Test */
-    // testImplementation "junit:junit:$junit_version"
-    // androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_version"
-    // androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_core_version"
 }
