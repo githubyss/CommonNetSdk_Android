@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion compile_sdk_version
@@ -50,10 +49,6 @@ android {
         main {
             java.srcDirs += 'src/main/kotlin'
         }
-    }
-
-    androidExtensions {
-        experimental = true
     }
 
     // lintOptions {
