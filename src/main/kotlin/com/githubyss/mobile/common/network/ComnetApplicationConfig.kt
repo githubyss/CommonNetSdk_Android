@@ -3,7 +3,6 @@ package com.githubyss.mobile.common.network
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.githubyss.mobile.common.kit.util.ActivityUtils
 import com.githubyss.mobile.common.kit.util.AppUtils
 
 /**
@@ -46,14 +45,8 @@ object ComnetApplicationConfig {
     fun init(app: Application?) {
         if (application == null) {
             application = app ?: AppUtils.getApplicationByReflect()
-            application?.registerActivityLifecycleCallbacks(ActivityUtils.activityLifecycle)
-        } else {
-            if (app != null && app.javaClass != application?.javaClass) {
-                application?.unregisterActivityLifecycleCallbacks(ActivityUtils.activityLifecycle)
-                ActivityUtils.activityLifecycle.activityList.clear()
-                application = app
-                application?.registerActivityLifecycleCallbacks(ActivityUtils.activityLifecycle)
-            }
+        } else if (app != null && app.javaClass != application?.javaClass) {
+            application = app
         }
     }
     
@@ -64,7 +57,7 @@ object ComnetApplicationConfig {
      */
     fun getApp(): Application? {
         if (application != null) {
-            return application ?: throw NullPointerException("application is null...")
+            return application /*?: throw NullPointerException("application is null...")*/
         }
         val app: Application? = AppUtils.getApplicationByReflect()
         init(app)

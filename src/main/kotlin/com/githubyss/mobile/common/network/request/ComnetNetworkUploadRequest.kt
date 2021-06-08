@@ -17,21 +17,30 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 
+
 /**
- * ComnetNetworkUploadRequest.kt
- * <Description>
- * <Details>
+ * ComnetNetworkUploadRequest
  *
  * @author Ace Yan
  * @github githubyss
+ * @createdTime 2021/06/03 10:01:47
  */
 class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
-    constructor(method: Int = Method.POST,
-                url: String,
-                map: Map<String, Any>,
-                repeatCount: Int = 0,
-                listener: Response.Listener<ComnetBasicNetworkModel>,
-                errorListener: Response.ErrorListener) : super(method, url, errorListener) {
+    
+    /** ********** ********** ********** Properties ********** ********** ********** */
+    
+    companion object {
+        private val TAG = ComnetNetworkUploadRequest::class.simpleName ?: "simpleName is null"
+    }
+    
+    private var headersMap: HashMap<String, String>? = null
+    private var listener: Response.Listener<ComnetBasicNetworkModel>? = null
+    private var httpEntity: HttpEntity? = null
+    
+    
+    /** ********** ********** ********** Constructors ********** ********** ********** */
+    
+    constructor(method: Int = Method.POST, url: String, map: Map<String, Any>, repeatCount: Int = 0, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : super(method, url, errorListener) {
         this@ComnetNetworkUploadRequest.listener = listener
         val builder = MultipartEntityBuilder.create()
         for (entry in map.entries) {
@@ -46,40 +55,29 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
         httpEntity = builder.build()
         retryPolicy = DefaultRetryPolicy(ComnetConfig.SO_TIME_OUT, repeatCount, 1.0F)
     }
-
-
-    private var headersMap: HashMap<String, String>? = null
-    private var listener: Response.Listener<ComnetBasicNetworkModel>? = null
-    private var httpEntity: HttpEntity? = null
-
-
-    fun setHeaders(headersMap: Map<String, String>) {
-        this@ComnetNetworkUploadRequest.headersMap ?: HashMap<String, String>()
-        this@ComnetNetworkUploadRequest.headersMap?.putAll(headersMap)
-    }
-
-
-    override fun getHeaders(
-    ): Map<String, String> = this@ComnetNetworkUploadRequest.headersMap ?: super.getHeaders()
-
+    
+    /** ********** ********** ********** Override ********** ********** ********** */
+    
+    override fun getHeaders(): Map<String, String> = this@ComnetNetworkUploadRequest.headersMap ?: super.getHeaders()
+    
     override fun getBody(): ByteArray? {
         val byteArrayOutputStream = ByteArrayOutputStream()
         return try {
             httpEntity?.writeTo(byteArrayOutputStream)
             byteArrayOutputStream.toByteArray()
-        } catch (exception: IOException) {
+        } catch (e: IOException) {
             null
         }
     }
-
+    
     override fun getBodyContentType(): String {
         return httpEntity?.contentType?.value ?: ""
     }
-
+    
     override fun deliverResponse(response: ComnetBasicNetworkModel?) {
         listener?.onResponse(response)
     }
-
+    
     override fun parseNetworkResponse(response: NetworkResponse?): Response<ComnetBasicNetworkModel> {
         try {
             for (entry in response?.headers?.entries ?: emptyMap<String, String>().entries) {
@@ -93,16 +91,25 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
                     return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
                 }
             }
-
-            val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers)).toString()
+            
+            val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers))
+                .toString()
             LogcatUtils.d(tag = "Volley network result", msg = result)
             val jsonObject = JSONObject(result)
             val networkModel = ComnetBasicNetworkModel(jsonObject)
             return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
-        } catch (exception: UnsupportedEncodingException) {
-            return Response.error(ParseError(exception))
-        } catch (exception: JSONException) {
-            return Response.error(ParseError(exception))
+        } catch (e: UnsupportedEncodingException) {
+            return Response.error(ParseError(e))
+        } catch (e: JSONException) {
+            return Response.error(ParseError(e))
         }
+    }
+    
+    
+    /** ********** ********** ********** Functions ********** ********** ********** */
+    
+    fun setHeaders(headersMap: Map<String, String>) {
+        this@ComnetNetworkUploadRequest.headersMap ?: HashMap<String, String>()
+        this@ComnetNetworkUploadRequest.headersMap?.putAll(headersMap)
     }
 }

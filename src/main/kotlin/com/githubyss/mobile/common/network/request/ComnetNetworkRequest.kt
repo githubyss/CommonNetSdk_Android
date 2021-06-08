@@ -25,72 +25,50 @@ import kotlin.collections.HashMap
  * @github githubyss
  */
 class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
-    constructor(method: Int = Method.GET,
-                url: String,
-                requestBody: String? = null,
-                listener: Response.Listener<ComnetBasicNetworkModel>,
-                errorListener: Response.ErrorListener) : super(method, url, requestBody, listener, errorListener) {
-        bodyType = PROTOCOL_CONTENT_TYPE
-        retryPolicy = DefaultRetryPolicy(ComnetConfig.SO_TIME_OUT, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
-        uuid = UUID.randomUUID().toString()
+    
+    /** ********** ********** ********** Properties ********** ********** ********** */
+    
+    companion object {
+        val TAG = ComnetNetworkRequest::class.simpleName ?: "simpleName is null"
+        private const val PROTOCOL_CHARSET = "utf-8"
+        private val PROTOCOL_CONTENT_TYPE = String.format("application/x-www-form-urlencoded; charset=%s", PROTOCOL_CHARSET)
     }
-
-    constructor(url: String,
-                listener: Response.Listener<ComnetBasicNetworkModel>,
-                errorListener: Response.ErrorListener
-    ) : this(Method.GET, url, null, listener, errorListener)
-
-    constructor(url: String,
-                requestBody: String,
-                listener: Response.Listener<ComnetBasicNetworkModel>,
-                errorListener: Response.ErrorListener
-    ) : this(Method.POST, url, requestBody, listener, errorListener)
-
-
-    private val PROTOCOL_CHARSET = "utf-8"
-    private val PROTOCOL_CONTENT_TYPE = String.format("application/x-www-form-urlencoded; charset=%s", PROTOCOL_CHARSET)
-
+    
     private var headersMap = HashMap<String, String>()
     private var uuid = "" /* Universally Unique Identifier */
     private var bodyType = ""
-
-
-    fun getUuid(): String {
-        if (TextUtils.isEmpty(uuid)) {
-            uuid = UUID.randomUUID().toString()
-        }
-        return uuid
+    
+    
+    /** ********** ********** ********** Constructors ********** ********** ********** */
+    
+    constructor(method: Int = Method.GET, url: String, requestBody: String? = null, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : super(method, url, requestBody, listener, errorListener) {
+        bodyType = PROTOCOL_CONTENT_TYPE
+        retryPolicy = DefaultRetryPolicy(ComnetConfig.SO_TIME_OUT, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        uuid = UUID.randomUUID()
+            .toString()
     }
-
-    fun setUuid(uuid: String) {
-        if (!TextUtils.isEmpty(uuid)) {
-            this@ComnetNetworkRequest.uuid = uuid
-        }
-    }
-
-    fun setHeaders(headersMap: Map<String, String>) {
-        this@ComnetNetworkRequest.headersMap.putAll(headersMap)
-    }
-
-    fun setBodyType(bodyType: String) {
-        this@ComnetNetworkRequest.bodyType = bodyType
-    }
-
-
+    
+    constructor(url: String, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : this(Method.GET, url, null, listener, errorListener)
+    
+    constructor(url: String, requestBody: String, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : this(Method.POST, url, requestBody, listener, errorListener)
+    
+    
+    /** ********** ********** ********** Override ********** ********** ********** */
+    
     override fun getHeaders(): MutableMap<String, String> {
         if (!TextUtils.isEmpty(uuid)) {
             headersMap.put("uuid", uuid)
         }
         return headersMap
     }
-
+    
     override fun getBodyContentType(): String {
         if (TextUtils.isEmpty(bodyType)) {
             bodyType = PROTOCOL_CONTENT_TYPE
         }
         return bodyType
     }
-
+    
     override fun parseNetworkResponse(response: NetworkResponse?): Response<ComnetBasicNetworkModel> {
         try {
             for (entry in response?.headers?.entries ?: emptyMap<String, String>().entries) {
@@ -104,16 +82,42 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
                     return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
                 }
             }
-
-            val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers)).toString()
+            
+            val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers))
+                .toString()
             LogcatUtils.d(tag = "Volley network result", msg = result)
             val jsonObject = JSONObject(result)
             val networkModel = ComnetBasicNetworkModel(jsonObject)
             return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))
-        } catch (exception: UnsupportedEncodingException) {
-            return Response.error(ParseError(exception))
-        } catch (exception: JSONException) {
-            return Response.error(ParseError(exception))
+        } catch (e: UnsupportedEncodingException) {
+            return Response.error(ParseError(e))
+        } catch (e: JSONException) {
+            return Response.error(ParseError(e))
         }
+    }
+    
+    
+    /** ********** ********** ********** Functions ********** ********** ********** */
+    
+    fun getUuid(): String {
+        if (TextUtils.isEmpty(uuid)) {
+            uuid = UUID.randomUUID()
+                .toString()
+        }
+        return uuid
+    }
+    
+    fun setUuid(uuid: String) {
+        if (!TextUtils.isEmpty(uuid)) {
+            this@ComnetNetworkRequest.uuid = uuid
+        }
+    }
+    
+    fun setHeaders(headersMap: Map<String, String>) {
+        this@ComnetNetworkRequest.headersMap.putAll(headersMap)
+    }
+    
+    fun setBodyType(bodyType: String) {
+        this@ComnetNetworkRequest.bodyType = bodyType
     }
 }
