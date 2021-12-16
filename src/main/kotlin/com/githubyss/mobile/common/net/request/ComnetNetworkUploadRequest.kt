@@ -1,10 +1,10 @@
-package com.githubyss.mobile.common.network.request
+package com.githubyss.mobile.common.net.request
 
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
 import com.githubyss.mobile.common.kit.util.LogUtils
-import com.githubyss.mobile.common.network.config.ComnetConfig
-import com.githubyss.mobile.common.network.model.ComnetBasicNetworkModel
+import com.githubyss.mobile.common.net.config.ComnetConfig
+import com.githubyss.mobile.common.net.model.ComnetBasicNetworkModel
 import org.apache.http.Consts
 import org.apache.http.HttpEntity
 import org.apache.http.entity.ContentType
@@ -30,7 +30,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
     /** ********** ********** ********** Properties ********** ********** ********** */
     
     companion object {
-        private val TAG = ComnetNetworkUploadRequest::class.simpleName ?: "simpleName is null"
+        private val TAG: String = ComnetNetworkUploadRequest::class.java.simpleName
     }
     
     private var headersMap: HashMap<String, String>? = null

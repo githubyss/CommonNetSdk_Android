@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.network
+package com.githubyss.mobile.common.net
 
 import android.annotation.SuppressLint
 import android.app.Application

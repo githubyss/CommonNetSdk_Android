@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.network.request
+package com.githubyss.mobile.common.net.request
 
 import android.text.TextUtils
 import com.android.volley.DefaultRetryPolicy
@@ -8,8 +8,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonRequest
 import com.githubyss.mobile.common.kit.util.LogUtils
-import com.githubyss.mobile.common.network.config.ComnetConfig
-import com.githubyss.mobile.common.network.model.ComnetBasicNetworkModel
+import com.githubyss.mobile.common.net.config.ComnetConfig
+import com.githubyss.mobile.common.net.model.ComnetBasicNetworkModel
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.UnsupportedEncodingException
@@ -29,7 +29,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
     /** ********** ********** ********** Properties ********** ********** ********** */
     
     companion object {
-        val TAG = ComnetNetworkRequest::class.simpleName ?: "simpleName is null"
+        val TAG: String = ComnetNetworkRequest::class.java.simpleName
         private const val PROTOCOL_CHARSET = "utf-8"
         private val PROTOCOL_CONTENT_TYPE = String.format("application/x-www-form-urlencoded; charset=%s", PROTOCOL_CHARSET)
     }

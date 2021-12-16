@@ -1,6 +1,6 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.githubyss.mobile.common.network"
+        package="com.githubyss.mobile.common.net"
         >
 
     <uses-permission android:name="android.permission.INTERNET" />

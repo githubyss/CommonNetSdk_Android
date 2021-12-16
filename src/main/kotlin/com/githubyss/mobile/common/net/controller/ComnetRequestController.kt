@@ -1,11 +1,11 @@
-package com.githubyss.mobile.common.network.controller
+package com.githubyss.mobile.common.net.controller
 
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
-import com.githubyss.mobile.common.network.ComnetApplicationConfig
-import com.githubyss.mobile.common.network.cache.ComnetBitmapCache
+import com.githubyss.mobile.common.net.ComnetApplicationConfig
+import com.githubyss.mobile.common.net.cache.ComnetBitmapCache
 
 /**
  * ComnetRequestController.kt
@@ -18,7 +18,7 @@ import com.githubyss.mobile.common.network.cache.ComnetBitmapCache
 class ComnetRequestController private constructor() {
     companion object {
         var instance = Holder.INSTANCE
-        val TAG = "ComnetRequestController"
+        val TAG: String = "ComnetRequestController"
     }
 
     private object Holder {
