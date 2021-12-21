@@ -1,4 +1,10 @@
-apply plugin: 'com.android.library'
+boolean isShellApp = project.getName() == shellApp
+boolean isLaunchApp = project.getName() == launchApp
+if (isLaunchApp) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
@@ -6,14 +12,18 @@ android {
     compileSdkVersion compile_sdk_version.toInteger()
     buildToolsVersion build_tools_version
 
+    resourcePrefix 'comnet_'
+
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
 
-        versionCode 1
-        versionName '1.0'
+        if (isLaunchApp) {
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        }
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -28,6 +38,54 @@ android {
             debuggable isDebuggable.toBoolean()
             minifyEnabled isMinifyEnabled.toBoolean()
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    if (isLaunchApp) {
+        flavorDimensions 'isLib'
+        productFlavors {
+            lib {
+                dimension 'isLib'
+            }
+            alone {
+                applicationId 'com.githubyss.mobile.common.net'
+                dimension 'isLib'
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src/main/java'
+                srcDirs 'src/main/kotlin'
+            }
+            res {
+                srcDirs 'src/main/res'
+                srcDirs 'src/main/res/common'
+            }
+            manifest {
+                srcFile 'src/main/AndroidManifest.xml'
+            }
+            jniLibs {
+                srcDirs 'libs'
+            }
+        }
+
+        if (isLaunchApp) {
+            alone {
+                java {
+                    srcDirs 'src/alone/java'
+                    srcDirs 'src/alone/kotlin'
+                }
+                res {
+                    srcDirs 'src/alone/res'
+                    srcDirs 'src/alone/res/common'
+                }
+                manifest {
+                    srcFile 'src/alone/AndroidManifest.xml'
+                }
+            }
         }
     }
 
@@ -46,15 +104,9 @@ android {
         exclude 'META-INF/metadata.jvm.kotlin_module'
     }
 
-    sourceSets {
-        main {
-            java.srcDirs += 'src/main/kotlin'
-        }
+    dataBinding {
+        enabled = isDataBindingEnabled.toBoolean()
     }
-
-    // lintOptions {
-    //     abortOnError false
-    // }
 }
 
 dependencies {
@@ -62,7 +114,8 @@ dependencies {
 
     implementation project(':CommonLibSdk_Android')
     implementation project(':CommonKitSdk_Android')
-    if (!isRunAlone.toBoolean()) {
+    if (isLaunchApp) {
+        implementation project(':CommonUiSdk_Android')
     }
 
     /* Volley */
