@@ -27,7 +27,7 @@ import java.io.UnsupportedEncodingException
  */
 class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
     
-    /** ********** ********** ********** Properties ********** ********** ********** */
+    /** ****************************** Properties ****************************** */
     
     companion object {
         private val TAG: String = ComnetNetworkUploadRequest::class.java.simpleName
@@ -38,7 +38,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
     private var httpEntity: HttpEntity? = null
     
     
-    /** ********** ********** ********** Constructors ********** ********** ********** */
+    /** ****************************** Constructors ****************************** */
     
     constructor(method: Int = Method.POST, url: String, map: Map<String, Any>, repeatCount: Int = 0, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : super(method, url, errorListener) {
         this@ComnetNetworkUploadRequest.listener = listener
@@ -56,7 +56,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
         retryPolicy = DefaultRetryPolicy(ComnetConfig.SO_TIME_OUT, repeatCount, 1.0F)
     }
     
-    /** ********** ********** ********** Override ********** ********** ********** */
+    /** ****************************** Override ****************************** */
     
     override fun getHeaders(): Map<String, String> = this@ComnetNetworkUploadRequest.headersMap ?: super.getHeaders()
     
@@ -106,7 +106,7 @@ class ComnetNetworkUploadRequest : Request<ComnetBasicNetworkModel> {
     }
     
     
-    /** ********** ********** ********** Functions ********** ********** ********** */
+    /** ****************************** Functions ****************************** */
     
     fun setHeaders(headersMap: Map<String, String>) {
         this@ComnetNetworkUploadRequest.headersMap ?: HashMap<String, String>()

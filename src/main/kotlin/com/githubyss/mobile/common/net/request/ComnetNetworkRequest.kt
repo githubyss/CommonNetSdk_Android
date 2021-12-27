@@ -26,7 +26,7 @@ import kotlin.collections.HashMap
  */
 class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
     
-    /** ********** ********** ********** Properties ********** ********** ********** */
+    /** ****************************** Properties ****************************** */
     
     companion object {
         val TAG: String = ComnetNetworkRequest::class.java.simpleName
@@ -39,7 +39,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
     private var bodyType = ""
     
     
-    /** ********** ********** ********** Constructors ********** ********** ********** */
+    /** ****************************** Constructors ****************************** */
     
     constructor(method: Int = Method.GET, url: String, requestBody: String? = null, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : super(method, url, requestBody, listener, errorListener) {
         bodyType = PROTOCOL_CONTENT_TYPE
@@ -53,7 +53,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
     constructor(url: String, requestBody: String, listener: Response.Listener<ComnetBasicNetworkModel>, errorListener: Response.ErrorListener) : this(Method.POST, url, requestBody, listener, errorListener)
     
     
-    /** ********** ********** ********** Override ********** ********** ********** */
+    /** ****************************** Override ****************************** */
     
     override fun getHeaders(): MutableMap<String, String> {
         if (!TextUtils.isEmpty(uuid)) {
@@ -97,7 +97,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
     }
     
     
-    /** ********** ********** ********** Functions ********** ********** ********** */
+    /** ****************************** Functions ****************************** */
     
     fun getUuid(): String {
         if (TextUtils.isEmpty(uuid)) {

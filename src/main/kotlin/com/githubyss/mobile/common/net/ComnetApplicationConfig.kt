@@ -13,14 +13,14 @@ import com.githubyss.mobile.common.kit.util.AppUtils
  */
 object ComnetApplicationConfig {
     
-    /** ********** ********** ********** Properties ********** ********** ********** */
+    /** ****************************** Properties ****************************** */
     
     @SuppressLint("StaticFieldLeak")
     var application: Application? = null
         private set
     
     
-    /** ********** ********** ********** Functions ********** ********** ********** */
+    /** ****************************** Functions ****************************** */
     
     /**
      * Init utils.
