@@ -8,9 +8,9 @@
     <application
         android:name=".app.application.ComnetApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/comres_ic_launcher"
+        android:icon="@mipmap/comres_ic_launcher_default"
         android:label="${APP_NAME}"
-        android:roundIcon="@mipmap/comres_ic_launcher_round"
+        android:roundIcon="@mipmap/comres_ic_launcher_default_round"
         android:supportsRtl="true"
         android:theme="@style/comres_app_gray_theme"
         >
