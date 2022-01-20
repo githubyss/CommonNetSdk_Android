@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Title -->
+    <string name="comnet_homepage_title">Net Debug Homepage</string>
+
+    <!-- Button -->
+    <string name="comnet_homepage_button_volley">Volley</string>
+</resources>

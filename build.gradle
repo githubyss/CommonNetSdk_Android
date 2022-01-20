@@ -22,6 +22,9 @@ android {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
 
+        versionCode 1
+        versionName "1.0"
+
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -74,13 +77,14 @@ android {
 
     flavorDimensions 'library'
     productFlavors {
-        app {
-            dimension 'library'
-            if (isLaunchApp) {
+        if (isLaunchApp) {
+            app {
+                dimension 'library'
                 applicationId 'com.githubyss.mobile.common.net'
+                versionCode 1
+                versionName "1.0"
+                manifestPlaceholders = [APP_NAME: "通用网络库"]
             }
-            versionCode 1
-            versionName "1.0"
         }
     }
 
@@ -111,6 +115,8 @@ android {
                 res {
                     srcDirs 'src/app/res'
                     srcDirs 'src/app/res/common'
+
+                    srcDirs 'src/app/res/homepage'
                 }
                 manifest {
                     srcFile 'src/app/AndroidManifest.xml'
@@ -150,10 +156,17 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg('moduleName', project.getName())
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':CommonLibSdk_Android')
+    implementation project(':CommonResSdk_Android')
     implementation project(':CommonKitSdk_Android')
 
     /* Volley */
