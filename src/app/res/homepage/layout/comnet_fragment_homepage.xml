@@ -37,19 +37,19 @@
                 android:orientation="vertical"
                 >
 
-                <com.google.android.flexbox.FlexboxLayout style="@style/comnet_equant_horizontal_flex_style">
+                <com.google.android.flexbox.FlexboxLayout style="@style/comres_equant_horizontal_flex_style">
 
                     <Button
-                        style="@style/comnet_equant_horizontal_button_style"
+                        style="@style/comres_equant_horizontal_button_style"
                         android:id="@+id/btn_volley"
                         android:text="@string/comnet_homepage_button_volley"
                         />
                 </com.google.android.flexbox.FlexboxLayout>
 
-                <com.google.android.flexbox.FlexboxLayout style="@style/comnet_equant_horizontal_flex_style">
+                <com.google.android.flexbox.FlexboxLayout style="@style/comres_equant_horizontal_flex_style">
 
                     <Button
-                        style="@style/comnet_equant_horizontal_button_style"
+                        style="@style/comres_equant_horizontal_button_style"
                         android:id="@+id/btn_"
                         />
                 </com.google.android.flexbox.FlexboxLayout>
