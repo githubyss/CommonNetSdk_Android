@@ -23,7 +23,7 @@ class HomepageActivity : BaseInlineBindingToolbarActivity() {
     /** ****************************** Override ****************************** */
 
     override fun init() {
-        addFragment(HomepageFragment(), HomepageFragment.TAG, false, binding.layoutFragmentContainer.id)
+        switchFragment(HomepageFragment(), HomepageFragment.TAG, false, binding.layoutFragmentContainer.id)
     }
 
     override fun setToolbarTitle() {

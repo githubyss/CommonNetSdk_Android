@@ -175,4 +175,8 @@ dependencies {
     /* Http */
     implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
     implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
+
+    /* Retrofit2 */
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit2_converter_moshi_version"
 }
