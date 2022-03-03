@@ -27,7 +27,7 @@ class HomepageFragment : BaseInlineBindingToolbarFragment(R.layout.comnet_fragme
 
     /** ****************************** Override ****************************** */
 
-    override fun init() {
+    override fun setupUi() {
         initView()
     }
 

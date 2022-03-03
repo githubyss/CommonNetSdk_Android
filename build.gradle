@@ -14,13 +14,13 @@ apply plugin: 'kotlin-kapt'
 
 android {
     buildToolsVersion build_tools_version
-    compileSdkVersion compile_sdk_version.toInteger()
+    compileSdk compile_sdk_version.toInteger()
 
     resourcePrefix 'comnet_'
 
     defaultConfig {
-        minSdkVersion min_sdk_version
-        targetSdkVersion target_sdk_version
+        minSdk min_sdk_version.toInteger()
+        targetSdk target_sdk_version.toInteger()
 
         versionCode 1
         versionName "1.0"
@@ -73,6 +73,25 @@ android {
                 signingConfig signingConfigs.release
             }
         }
+    }
+
+    compileOptions {
+        sourceCompatibility java_version
+        targetCompatibility java_version
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/metadata.kotlin_module'
+        exclude 'META-INF/metadata.jvm.kotlin_module'
+    }
+
+    dataBinding {
+        enabled isDataBindingEnabled.toBoolean()
     }
 
     flavorDimensions 'library'
@@ -134,25 +153,6 @@ android {
         // sourceSets.all {
         //     set -> println "${set.name} 的文件是 ${set.java.srcDirs}"
         // }
-    }
-
-    compileOptions {
-        sourceCompatibility java_version
-        targetCompatibility java_version
-    }
-
-    packagingOptions {
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/metadata.kotlin_module'
-        exclude 'META-INF/metadata.jvm.kotlin_module'
-    }
-
-    dataBinding {
-        enabled = isDataBindingEnabled.toBoolean()
     }
 }
 
