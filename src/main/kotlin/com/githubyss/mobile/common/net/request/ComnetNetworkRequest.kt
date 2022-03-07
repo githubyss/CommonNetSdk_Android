@@ -73,7 +73,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
         try {
             for (entry in response?.headers?.entries ?: emptyMap<String, String>().entries) {
                 if (entry.key == "login.flag") {
-                    LogUtils.d(TAG, "Volley network result >> login.flag")
+                    logD(TAG, "Volley network result >> login.flag")
                     val map = HashMap<String, String>()
                     map["responseCode"] = ComnetConfig.NEED_LOGIN_CODE
                     map["responseMsg"] = "login.flag"
@@ -85,7 +85,7 @@ class ComnetNetworkRequest : JsonRequest<ComnetBasicNetworkModel> {
 
             val result = java.lang.String(response?.data, HttpHeaderParser.parseCharset(response?.headers))
                 .toString()
-            LogUtils.d(tag = "Volley network result", msg = result)
+            logD(tag = "Volley network result", msg = result)
             val jsonObject = JSONObject(result)
             val networkModel = ComnetBasicNetworkModel(jsonObject)
             return Response.success(networkModel, HttpHeaderParser.parseCacheHeaders(response))

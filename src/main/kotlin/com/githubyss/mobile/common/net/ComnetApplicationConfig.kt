@@ -30,7 +30,7 @@ object ComnetApplicationConfig {
      */
     fun init(context: Context?) {
         if (context == null) {
-            init(AppUtils.getApplicationByReflect())
+            init(getApplicationByReflect())
             return
         }
         init(context.applicationContext as Application)
@@ -44,7 +44,7 @@ object ComnetApplicationConfig {
      */
     fun init(app: Application?) {
         if (application == null) {
-            application = app ?: AppUtils.getApplicationByReflect()
+            application = app ?: getApplicationByReflect()
         } else if (app != null && app.javaClass != application?.javaClass) {
             application = app
         }
@@ -59,7 +59,7 @@ object ComnetApplicationConfig {
         if (application != null) {
             return application /*?: throw NullPointerException("application is null...")*/
         }
-        val app: Application? = AppUtils.getApplicationByReflect()
+        val app: Application? = getApplicationByReflect()
         init(app)
         return app
     }
