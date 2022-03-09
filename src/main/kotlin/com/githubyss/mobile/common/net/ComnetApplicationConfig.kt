@@ -3,7 +3,8 @@ package com.githubyss.mobile.common.net
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.githubyss.mobile.common.kit.util.AppUtils
+import com.githubyss.mobile.common.kit.util.getApplicationByReflect
+
 
 /**
  * ComnetApplicationConfigConfig.kt

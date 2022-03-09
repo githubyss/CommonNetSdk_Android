@@ -2,7 +2,7 @@ package com.githubyss.mobile.common.net.request
 
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
-import com.githubyss.mobile.common.kit.util.LogUtils
+import com.githubyss.mobile.common.kit.util.logD
 import com.githubyss.mobile.common.net.config.ComnetConfig
 import com.githubyss.mobile.common.net.model.ComnetBasicNetworkModel
 import org.apache.http.Consts
