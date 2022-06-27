@@ -47,10 +47,6 @@ android {
         }
     }
 
-    dataBinding {
-        enabled feature.isDataBindingEnabled
-    }
-
     flavorDimensions 'library'
     productFlavors {
         if (isLaunchApp) {
@@ -111,13 +107,16 @@ android {
             // set -> println "集合 ${set.name} 的文件是 ${set.java.srcDirs}"
         }
     }
+
+    dataBinding {
+        enabled feature.isDataBindingEnabled
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':DesignPatternLibrary_Android')
-    implementation project(':CommonLibSdk_Android')
     implementation project(':CommonResSdk_Android')
     implementation project(':CommonKitSdk_Android')
 
