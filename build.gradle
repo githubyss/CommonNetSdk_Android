@@ -118,6 +118,7 @@ dependencies {
 
     implementation project(':DesignPatternLibrary_Android')
     implementation project(':CommonResSdk_Android')
+    implementation project(':CommonBaseSdk_Android')
     implementation project(':CommonKitSdk_Android')
 
     /* Http */
