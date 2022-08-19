@@ -9,8 +9,6 @@ import com.githubyss.mobile.common.net.cache.ComnetBitmapCache
 
 /**
  * ComnetRequestController.kt
- * <Description>
- * <Details>
  *
  * @author Ace Yan
  * @github githubyss

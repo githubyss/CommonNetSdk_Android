@@ -4,8 +4,6 @@ import com.android.volley.VolleyLog
 
 /**
  * ComnetConfig.kt
- * <Description>
- * <Details>
  *
  * @author Ace Yan
  * @github githubyss

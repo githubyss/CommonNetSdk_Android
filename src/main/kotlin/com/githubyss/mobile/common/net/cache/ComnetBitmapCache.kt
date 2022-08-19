@@ -6,8 +6,6 @@ import com.android.volley.toolbox.ImageLoader
 
 /**
  * ComnetBitmapCache.kt
- * <Description>
- * <Details>
  *
  * @author Ace Yan
  * @github githubyss

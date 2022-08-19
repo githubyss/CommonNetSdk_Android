@@ -3,12 +3,9 @@ package com.githubyss.mobile.common.net.model
 import android.text.TextUtils
 import org.json.JSONException
 import org.json.JSONObject
-import java.lang.Exception
 
 /**
  * ComnetBasicNetworkModel.kt
- * <Description>
- * <Details>
  *
  * @author Ace Yan
  * @github githubyss

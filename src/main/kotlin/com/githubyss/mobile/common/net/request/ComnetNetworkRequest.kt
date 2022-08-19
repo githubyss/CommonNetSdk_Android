@@ -18,8 +18,6 @@ import kotlin.collections.HashMap
 
 /**
  * ComnetNetworkRequest.kt
- * <Description>
- * <Details>
  *
  * @author Ace Yan
  * @github githubyss
