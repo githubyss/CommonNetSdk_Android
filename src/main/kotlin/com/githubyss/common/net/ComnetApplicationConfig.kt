@@ -1,9 +1,9 @@
-package com.githubyss.mobile.common.net
+package com.githubyss.common.net
 
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.githubyss.mobile.common.kit.util.getApplicationByReflect
+import com.githubyss.common.kit.util.getApplicationByReflect
 
 
 /**

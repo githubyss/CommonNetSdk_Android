@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.net.cache
+package com.githubyss.common.net.cache
 
 import android.graphics.Bitmap
 import android.util.LruCache

@@ -1,11 +1,11 @@
-package com.githubyss.mobile.common.net.controller
+package com.githubyss.common.net.controller
 
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
-import com.githubyss.mobile.common.net.ComnetApplicationConfig
-import com.githubyss.mobile.common.net.cache.ComnetBitmapCache
+import com.githubyss.common.net.ComnetApplicationConfig
+import com.githubyss.common.net.cache.ComnetBitmapCache
 
 /**
  * ComnetRequestController.kt

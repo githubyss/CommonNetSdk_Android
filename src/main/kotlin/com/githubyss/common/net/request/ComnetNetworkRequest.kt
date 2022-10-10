@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.net.request
+package com.githubyss.common.net.request
 
 import android.text.TextUtils
 import com.android.volley.DefaultRetryPolicy
@@ -7,9 +7,9 @@ import com.android.volley.ParseError
 import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonRequest
-import com.githubyss.mobile.common.kit.util.logD
-import com.githubyss.mobile.common.net.config.ComnetConfig
-import com.githubyss.mobile.common.net.model.ComnetBasicNetworkModel
+import com.githubyss.common.kit.util.logD
+import com.githubyss.common.net.config.ComnetConfig
+import com.githubyss.common.net.model.ComnetBasicNetworkModel
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.UnsupportedEncodingException

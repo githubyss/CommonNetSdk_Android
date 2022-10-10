@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.net.config
+package com.githubyss.common.net.config
 
 import com.android.volley.VolleyLog
 

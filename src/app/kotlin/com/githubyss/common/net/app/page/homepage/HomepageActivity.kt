@@ -1,7 +1,7 @@
-package com.githubyss.mobile.common.net.app.page.homepage
+package com.githubyss.common.net.app.page.homepage
 
-import com.githubyss.mobile.common.kit.base.view_binding.page.inline.BaseInlineBindingToolbarActivity
-import com.githubyss.mobile.common.net.R
+import com.githubyss.common.kit.base.view_binding.page.inline.BaseInlineBindingToolbarActivity
+import com.githubyss.common.net.R
 
 
 /**

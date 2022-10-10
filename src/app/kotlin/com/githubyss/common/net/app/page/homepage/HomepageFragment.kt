@@ -1,10 +1,10 @@
-package com.githubyss.mobile.common.net.app.page.homepage
+package com.githubyss.common.net.app.page.homepage
 
 import android.view.View
-import com.githubyss.mobile.common.kit.base.view_binding.page.inline.BaseInlineBindingToolbarFragment
-import com.githubyss.mobile.common.kit.base.view_binding.page.inline.bindView
-import com.githubyss.mobile.common.net.R
-import com.githubyss.mobile.common.net.databinding.ComnetFragmentHomepageBinding
+import com.githubyss.common.kit.base.view_binding.page.inline.BaseInlineBindingToolbarFragment
+import com.githubyss.common.kit.base.view_binding.page.inline.bindView
+import com.githubyss.common.net.R
+import com.githubyss.common.net.databinding.ComnetFragmentHomepageBinding
 
 
 /**

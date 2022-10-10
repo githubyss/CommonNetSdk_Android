@@ -1,10 +1,10 @@
-package com.githubyss.mobile.common.net.request
+package com.githubyss.common.net.request
 
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
-import com.githubyss.mobile.common.kit.util.logD
-import com.githubyss.mobile.common.net.config.ComnetConfig
-import com.githubyss.mobile.common.net.model.ComnetBasicNetworkModel
+import com.githubyss.common.kit.util.logD
+import com.githubyss.common.net.config.ComnetConfig
+import com.githubyss.common.net.model.ComnetBasicNetworkModel
 import org.apache.http.Consts
 import org.apache.http.HttpEntity
 import org.apache.http.entity.ContentType

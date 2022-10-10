@@ -1,4 +1,4 @@
-package com.githubyss.mobile.common.net.model
+package com.githubyss.common.net.model
 
 import android.text.TextUtils
 import org.json.JSONException

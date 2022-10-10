@@ -1,6 +1,6 @@
-package com.githubyss.mobile.common.net.app.application
+package com.githubyss.common.net.app.application
 
-import com.githubyss.mobile.common.kit.base.application.BaseApplication
+import com.githubyss.common.kit.base.application.BaseApplication
 import kotlin.properties.Delegates
 
 
